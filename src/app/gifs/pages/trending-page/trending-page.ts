@@ -1,8 +1,9 @@
-import {  Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { GifsSideMenuOptions } from "../../components/gifs-side-menu/gifs-side-menu-options/gifs-side-menu-options";
 
 @Component({
   selector: 'app-trending-page',
-  imports: [],
+  imports: [GifsSideMenuOptions],
   templateUrl: './trending-page.html',
 
 })
