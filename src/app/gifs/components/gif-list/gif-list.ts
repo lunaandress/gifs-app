@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Gif } from '../../interfaces/gifs.interface';
 import { GifListItemComponent } from './gif-list-item/gif-list-item';
 
 @Component({
@@ -8,5 +9,5 @@ import { GifListItemComponent } from './gif-list-item/gif-list-item';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GifListComponent {
-  gifs=input.required<string[]>()
+  gifs=input.required<Gif[]>()
 }
