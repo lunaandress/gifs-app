@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import type { GyphiResponse } from '../interfaces/giphy.interfaces';
 import type { Gif } from '../interfaces/gifs.interface';
+import type { GyphiResponse } from '../interfaces/giphy.interfaces';
 import { GifMapper } from './mapper/gif.mapper';
 
 @Injectable({providedIn: 'root'})
@@ -31,4 +31,19 @@ export class GifService {
     })
 
   }
+
+
+  searchGifs(query:string){
+    this.http.get<GyphiResponse>(`${environment.giphyUrl}/gifs/search`,{
+      params:{
+        api_key:environment.giphyapiKey,
+        limit:20,
+        q:query,
+      },
+    }).subscribe((resp)=>{
+      const gifs = GifMapper.mapGiphyItemToGifArray(resp.data);
+      console.log({search:gifs});
+    })
+  }
+
 }
